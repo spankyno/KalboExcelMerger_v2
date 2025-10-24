@@ -1,0 +1,6 @@
+
+{
+  "name": "Kalbo Excel Merger",
+  "description": "Una aplicación web para combinar dos archivos Excel basados en una columna de comparación, fusionando filas coincidentes y mostrando los datos en una tabla descargable.",
+  "requestFramePermissions": []
+}

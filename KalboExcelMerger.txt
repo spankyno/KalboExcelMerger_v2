@@ -1,0 +1,22 @@
+Crea una app en una página web, para subir a un repo de Github, y vincularla en Netlify.
+El nombre de la app, será Kalbo Excel Merger.
+
+Tengo dos listas en archivos excel (xlsx); Lista 1 y Lista2.
+La lista 1 y la lista 2 tienen estos campos:
+(añoact	codmat	numorden	material	costeunit	precioem	medic	Agrupacion)
+
+La idea es generar una única lista que combine las dos.
+
+Aquellas filas cuya código (columna codmat) sea igual, reflejarán su medición en la misma fila, en los campos medic1 y medic2.
+Y las filas cuya código (columna codmat) sea diferente, reflejarán su medición en dos filas, una fila con medic1 y otra con medic2.
+
+FUNCIONAMIENTO.
+
+- Archivos Excel: El usuario subirá dos archivos excel, con las mismas columnas.
+- Campo de medición (Lista1): nombre del campo: "medicion"
+- Campo de medición (Lista2): nombre del campo: "medicion"
+- Campo de comparación: Es el que se compara si es igual o no, en este caso: "codmat"
+
+La columna de comparación, será configurada por el usuario. Y las columnas a sumar si la comparación es igual(medic), también.
+La página mostrará la fusión de las dos listas, y un botón para descargarlo en excel.
+La página mostrará casillas de verificación, para incluir las columnas que el usuario quiera.

@@ -340,42 +340,71 @@ const App: React.FC = () => {
     };
 
     return (
-        <div className="min-h-screen p-4 sm:p-6 lg:p-8">
-            <div className="max-w-7xl mx-auto">
-                <header className="text-center mb-8">
-                    <h1 className="text-4xl font-extrabold text-slate-900 tracking-tight">Kalbo Excel Merger</h1>
-                    <p className="mt-2 text-lg text-slate-600">Combina hasta 4 archivos Excel de forma inteligente.</p>
-                </header>
-                
-                 <div className="flex justify-end mb-4">
-                    <button onClick={handleReset} className="inline-flex items-center px-4 py-2 text-sm font-medium text-slate-700 bg-white border border-slate-300 rounded-md hover:bg-slate-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-                        <ResetIcon />
-                        Empezar de Nuevo
-                    </button>
-                </div>
+        <div className="min-h-screen flex flex-col bg-slate-50">
+            {/* Contenido Principal */}
+            <main className="flex-grow p-4 sm:p-6 lg:p-8">
+                <div className="max-w-7xl mx-auto">
+                    <header className="text-center mb-8">
+                        <h1 className="text-4xl font-extrabold text-slate-900 tracking-tight">Kalbo Excel Merger</h1>
+                        <p className="mt-2 text-lg text-slate-600">Combina hasta 4 archivos Excel de forma inteligente.</p>
+                    </header>
+                    
+                     <div className="flex justify-end mb-4">
+                        <button onClick={handleReset} className="inline-flex items-center px-4 py-2 text-sm font-medium text-slate-700 bg-white border border-slate-300 rounded-md hover:bg-slate-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                            <ResetIcon />
+                            Empezar de Nuevo
+                        </button>
+                    </div>
 
-                <div className="w-full p-6 bg-white rounded-lg shadow-md border border-slate-200">
-                    <h2 className="text-xl font-bold mb-4 text-slate-800">1. Cargar Archivos</h2>
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-                        {Array.from({ length: MAX_FILES }).map((_, index) => (
-                             <FileUploader
-                                key={index}
-                                id={`file${index}`}
-                                title={`Archivo ${index + 1}`}
-                                onFileChange={(file) => handleFileChange(file, index)}
-                                fileData={filesData[index]}
-                            />
-                        ))}
+                    <div className="w-full p-6 bg-white rounded-lg shadow-md border border-slate-200">
+                        <h2 className="text-xl font-bold mb-4 text-slate-800">1. Cargar Archivos</h2>
+                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                            {Array.from({ length: MAX_FILES }).map((_, index) => (
+                                 <FileUploader
+                                    key={index}
+                                    id={`file${index}`}
+                                    title={`Archivo ${index + 1}`}
+                                    onFileChange={(file) => handleFileChange(file, index)}
+                                    fileData={filesData[index]}
+                                />
+                            ))}
+                        </div>
+                    </div>
+
+                    {error && <div className="mt-4 p-4 text-sm text-red-700 bg-red-100 rounded-lg" role="alert">{error}</div>}
+
+                    {renderConfig()}
+                    
+                    {renderResults()}
+                </div>
+            </main>
+
+            {/* Footer */}
+            <footer className="border-t border-slate-200 bg-white mt-16">
+                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 flex flex-col md:flex-row justify-between items-center gap-4">
+                    <p className="text-center md:text-left text-slate-500 text-sm">
+                        Aitor Sánchez Gutiérrez &copy; 2026 - Reservados todos los derechos
+                    </p>
+                    <div className="flex items-center gap-6 text-sm">
+                        <a 
+                            href="https://aitorsanchez.pages.dev/" 
+                            target="_blank" 
+                            rel="noopener noreferrer" 
+                            className="text-slate-500 hover:text-indigo-600 transition-colors font-medium"
+                        >
+                            Blog
+                        </a>
+                        <a 
+                            href="https://aitorhub.vercel.app/" 
+                            target="_blank" 
+                            rel="noopener noreferrer" 
+                            className="text-slate-500 hover:text-indigo-600 transition-colors font-medium"
+                        >
+                            Más apps
+                        </a>
                     </div>
                 </div>
-
-                {error && <div className="mt-4 p-4 text-sm text-red-700 bg-red-100 rounded-lg" role="alert">{error}</div>}
-
-                {renderConfig()}
-                
-                {renderResults()}
-
-            </div>
+            </footer>
         </div>
     );
 };
